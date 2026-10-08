@@ -72,7 +72,7 @@
             </div>
         </section>
         <!-- !menu section -->
-        <section class="menu-section">
+        <section class="menu-section" id="menu">
             <div class="section-heading">
                 <p>À CHACUN SA PART</p>
                 <h2>La carte des <span>envies.</span></h2>
@@ -303,9 +303,164 @@
                     <h3>Une part ?</h3>
                     <h4>Votre panier attend sa pizza.</h4>
                     <p>Choisir votre recette et laissez la<br> gourmandise faire le reste.</p>
-                    <button class="cart-start">Decouvrir la carte</button>
+                    <a href="#menu" class="cart-start">Decouvrir la carte</a>
                 </div>
-                <div class="cart-items"></div>
+
+                <!-- !CART ITEMS -->
+
+                <div class="cart-items">
+
+                    <!-- !MARGHERITA -->
+
+                    <div class="cart-item" hidden>
+                        <img src="./public/images/margherita.png" alt="Margherita">
+
+                        <div class="cart-item-info">
+                            <h3>Margherita</h3>
+                            <p>49 DH / pizza</p>
+
+                            <div class="cart-quantity">
+                                <button class="quantity-minus">-</button>
+                                <span class="quantity">1</span>
+                                <button class="quantity-plus">+</button>
+                            </div>
+                        </div>
+
+                        <div class="cart-item-price">
+                            <strong>49 DH</strong>
+                            <button class="remove-item">Supprimer</button>
+                        </div>
+                    </div>
+
+                    <!-- !DIAVOLA -->
+
+                    <div class="cart-item" hidden>
+                        <img src="./public/images/diavola.png" alt="Diavola">
+
+                        <div class="cart-item-info">
+                            <h3>Diavola</h3>
+                            <p>69 DH / pizza</p>
+
+                            <div class="cart-quantity">
+                                <button class="quantity-minus">−</button>
+                                <span class="quantity">1</span>
+                                <button class="quantity-plus">+</button>
+                            </div>
+                        </div>
+
+                        <div class="cart-item-price">
+                            <strong>69 DH</strong>
+                            <button class="remove-item">Supprimer</button>
+                        </div>
+                    </div>
+
+                    <!-- !POLLO -->
+
+                    <div class="cart-item" hidden>
+                        <img src="./public/images/pollo.png" alt="Pollo">
+
+                        <div class="cart-item-info">
+                            <h3>Pollo</h3>
+                            <p>79 DH / pizza</p>
+
+                            <div class="cart-quantity">
+                                <button class="quantity-minus">−</button>
+                                <span class="quantity">1</span>
+                                <button class="quantity-plus">+</button>
+                            </div>
+                        </div>
+
+                        <div class="cart-item-price">
+                            <strong>79 DH</strong>
+                            <button class="remove-item">Supprimer</button>
+                        </div>
+                    </div>
+
+                    <!-- !GIARDINO -->
+
+                    <div class="cart-item" hidden>
+                        <img src="./public/images/giardino.png" alt="Giardino">
+
+                        <div class="cart-item-info">
+                            <h3>Giardino</h3>
+                            <p>65 DH / pizza</p>
+
+                            <div class="cart-quantity">
+                                <button class="quantity-minus">−</button>
+                                <span class="quantity">1</span>
+                                <button class="quantity-plus">+</button>
+                            </div>
+                        </div>
+
+                        <div class="cart-item-price">
+                            <strong>65 DH</strong>
+                            <button class="remove-item">Supprimer</button>
+                        </div>
+                    </div>
+
+                    <!-- !TONNO -->
+
+                    <div class="cart-item" hidden>
+                        <img src="./public/images/tonno.png" alt="Tonno">
+
+                        <div class="cart-item-info">
+                            <h3>Tonno</h3>
+                            <p>75 DH / pizza</p>
+
+                            <div class="cart-quantity">
+                                <button class="quantity-minus">−</button>
+                                <span class="quantity">1</span>
+                                <button class="quantity-plus">+</button>
+                            </div>
+                        </div>
+
+                        <div class="cart-item-price">
+                            <strong>75 DH</strong>
+                            <button class="remove-item">Supprimer</button>
+                        </div>
+                    </div>
+
+                    <!-- !QUATTRO FORMAGGI -->
+
+                    <div class="cart-item" hidden>
+                        <img src="./public/images/quattro-formaggi.png" alt="Quattro Formaggi">
+
+                        <div class="cart-item-info">
+                            <h3>Quattro Formaggi</h3>
+                            <p>85 DH / pizza</p>
+
+                            <div class="cart-quantity">
+                                <button class="quantity-minus">−</button>
+                                <span class="quantity">1</span>
+                                <button class="quantity-plus">+</button>
+                            </div>
+                        </div>
+
+                        <div class="cart-item-price">
+                            <strong>85 DH</strong>
+                            <button class="remove-item">Supprimer</button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- !CART FOOTER -->
+
+                <div class="cart-footer" hidden>
+
+                    <div class="cart-total">
+                        <span>Total du panier</span>
+                        <strong>0 DH</strong>
+                    </div>
+
+                    <p>Les frais de livraison sont précisés à l'étape suivante.</p>
+
+                    <button class="checkout-button">Préparer ma commande</button>
+
+                    <a href="#menu" class="continue-shopping">Ajouter une autre pizza</a>
+
+                </div>
+
             </div>
         </aside>
     </main>
