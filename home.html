@@ -498,7 +498,8 @@
                             <label for="customerPhone">Téléphone</label>
                             <input type="tel" id="customerPhone" placeholder="06 12 34 56 78">
                             <p class="phone-note">Numéro marocain : 05, 06, 07 ou +212.</p>
-                            <p class="phone-error" hidden>Indiquez un numéro marocain valide, par exemple 06 12 34 56 78.</p>
+                            <p class="phone-error" hidden>Indiquez un numéro marocain valide, par exemple 06 12 34 56
+                                78.</p>
 
                             <!-- !DELIVERY ADDRESS -->
                             <div class="delivery-address" hidden>
@@ -522,10 +523,43 @@
                             </div>
                         </div>
                         <!-- !DEMO TEXT -->
-                        <p class="checkout-demo">Ceci est une démonstration. Aucun paiement et aucune commande ne seront envoyés.</p>
+                        <p class="checkout-demo">Ceci est une démonstration. Aucun paiement et aucune commande ne seront
+                            envoyés.</p>
                         <!-- !CONFIRM BUTTON -->
                         <button class="confirm-order">Confirmer ma commande</button>
                     </div>
+                </div>
+            </div>
+            <!-- !ORDER SUCCESS -->
+
+            <div class="order-success" hidden>
+                <div class="success-header">
+                    <div>
+                        <p>UNE ENVIE PREND FORME</p>
+                        <h2>Bon appétit<span>.</span></h2>
+                    </div>
+                    <button class="success-close">&times;</button>
+                </div>
+                <div class="success-content">
+                    <p class="success-small-title">C'EST DANS LA BOÎTE</p>
+                    <h3>Merci, <span class="customer-name-result"></span> !</h3>
+                    <p class="success-message">Votre commande de démonstration est prête.</p>
+
+                    <div class="order-box">
+                        <p class="order-number">DÉMO <span class="order-reference">FRN-V20L29</span></p>
+                        <div class="success-items"></div>
+                        <div class="success-delivery">
+                            <p><span class="success-order-type">À emporter</span>-<span
+                                    class="success-delivery-price">Sans frais</span></p>
+                            <p>Téléphone :<span class="customer-phone-result"></span></p>
+                        </div>
+                        <div class="success-total">
+                            <span>Total</span>
+                            <strong class="success-total-price">0 MAD</strong>
+                        </div>
+                    </div>
+                    <p class="success-demo">Simulation terminée. Aucune commande réelle n'a été passée.</p>
+                    <button class="return-menu">Retour à la carte</button>
                 </div>
             </div>
         </aside>

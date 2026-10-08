@@ -42,7 +42,7 @@ addButtons.forEach(function (button) {
     button.addEventListener("click", function () {
         cartTotal++;
         cartCount.textContent = cartTotal;
-    });
+    }); 
 });
 
 let cartButton = document.querySelector(".mon-panier a");
@@ -378,5 +378,103 @@ backCartText.addEventListener("click", function (event) {
     event.preventDefault();
     checkoutPage.hidden = true;
     cartFooter.hidden = false;
+
+});
+
+
+let orderSuccess = document.querySelector(".order-success");
+let confirmOrder = document.querySelector(".confirm-order");
+let successClose = document.querySelector(".success-close");
+let returnMenu = document.querySelector(".return-menu");
+let customerNameResult = document.querySelector(".customer-name-result");
+let customerPhoneResult = document.querySelector(".customer-phone-result");
+let successItems = document.querySelector(".success-items");
+let successTotalPrice = document.querySelector(".success-total-price");
+let successOrderType = document.querySelector(".success-order-type");
+let successDeliveryPrice = document.querySelector(".success-delivery-price");
+
+// !===================this is for confirm order
+confirmOrder.addEventListener("click", function () {
+    let customerName = document.getElementById("customerName").value.trim();
+    let customerPhone = document.getElementById("customerPhone").value.trim();
+    if (customerName === "") {
+        document.getElementById("customerName").focus();
+        return;
+    }
+
+    if (customerPhone === "") {
+        document.getElementById("customerPhone").focus();
+        return;
+    }
+
+    if (document.getElementById("customerPhone").classList.contains("phone-invalid")) {
+        document.getElementById("customerPhone").focus();
+        return;
+    }
+
+    customerNameResult.textContent = customerName;
+    customerPhoneResult.textContent = customerPhone;
+
+    // *create order items
+    successItems.innerHTML = "";
+    let finalTotal = 0;
+    cartItems.forEach(function (item) {
+        if (!item.hidden) {
+            let quantity = Number(item.querySelector(".quantity").textContent);
+            let pizzaName = item.querySelector(".cart-item-info h3").textContent;
+            let priceText = item.querySelector(".cart-item-info p").textContent;
+            let price = Number(priceText.split(" ")[0]);
+            let itemTotal = quantity * price;
+            finalTotal = finalTotal + itemTotal;
+            let successItem = document.createElement("div");
+            successItem.className = "success-item";
+            successItem.innerHTML =
+                "<span>" +
+                quantity +
+                " * " +
+                pizzaName +
+                "</span>" +
+                "<strong>" +
+                itemTotal +
+                " MAD" +
+                "</strong>";
+            successItems.appendChild(successItem);
+
+        }
+
+    });
+
+    // *delivery price
+    let selectedOption = document.querySelector('input[name="orderType"]:checked');
+
+    if (selectedOption.value === "delivery") {
+        successOrderType.textContent = "En livraison";
+        successDeliveryPrice.textContent = "+ 20 MAD";
+        finalTotal = finalTotal + 20;
+
+    } else {
+        successOrderType.textContent = "À emporter";
+        successDeliveryPrice.textContent = "Sans frais";
+
+    }
+    successTotalPrice.textContent = finalTotal + " MAD";
+    checkoutPage.hidden = true;
+    orderSuccess.hidden = false;
+
+});
+
+// !===================this is for return to menu
+returnMenu.addEventListener("click", function () {
+    orderSuccess.hidden = true;
+    cartDrawer.classList.remove("active");
+    cartOverlay.classList.remove("active");
+});
+
+// !===================this is for close success
+successClose.addEventListener("click", function () {
+
+    orderSuccess.hidden = true;
+    cartDrawer.classList.remove("active");
+    cartOverlay.classList.remove("active");
 
 });
