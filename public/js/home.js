@@ -5,7 +5,6 @@ let categorySelect = document.getElementById("categorySelect");
 let addButtons = document.querySelectorAll(".add-button");
 let cartCount = document.querySelector(".mon-panier span");
 
-
 // !==============this is for fillter and search
 function filterPizzas() {
     const searchValue = searchInput.value.toLowerCase();
@@ -35,8 +34,7 @@ function filterPizzas() {
 }
 searchInput.addEventListener("input", filterPizzas);
 categorySelect.addEventListener("change", filterPizzas);
-
-// !===================this is for panier
+// !===================this is for total panier
 let cartTotal = 0;
 
 addButtons.forEach(function (button) {
@@ -45,4 +43,27 @@ addButtons.forEach(function (button) {
         cartCount.textContent = cartTotal;
     });
 });
+
+let cartButton = document.querySelector(".mon-panier a");
+let cartDrawer = document.querySelector(".cart-drawer");
+let cartOverlay = document.querySelector(".cart-overlay");
+
+// !===================this is for open panier
+cartButton.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    cartDrawer.classList.add("active");
+    cartOverlay.classList.add("active");
+});
+// !===================this is for close panier
+let closeCart = document.querySelector(".cart-close");
+closeCart.addEventListener("click", function (event) {
+event.preventDefault
+    cartDrawer.classList.remove("active");
+    cartOverlay.classList.remove("active");
+
+});
+
+
+
 
