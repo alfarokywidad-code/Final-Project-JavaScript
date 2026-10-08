@@ -342,7 +342,7 @@
                             <p>69 DH / pizza</p>
 
                             <div class="cart-quantity">
-                                <button class="quantity-minus">−</button>
+                                <button class="quantity-minus">-</button>
                                 <span class="quantity">1</span>
                                 <button class="quantity-plus">+</button>
                             </div>
@@ -364,7 +364,7 @@
                             <p>79 DH / pizza</p>
 
                             <div class="cart-quantity">
-                                <button class="quantity-minus">−</button>
+                                <button class="quantity-minus">-</button>
                                 <span class="quantity">1</span>
                                 <button class="quantity-plus">+</button>
                             </div>
@@ -386,7 +386,7 @@
                             <p>65 DH / pizza</p>
 
                             <div class="cart-quantity">
-                                <button class="quantity-minus">−</button>
+                                <button class="quantity-minus">-</button>
                                 <span class="quantity">1</span>
                                 <button class="quantity-plus">+</button>
                             </div>
@@ -408,7 +408,7 @@
                             <p>75 DH / pizza</p>
 
                             <div class="cart-quantity">
-                                <button class="quantity-minus">−</button>
+                                <button class="quantity-minus">-</button>
                                 <span class="quantity">1</span>
                                 <button class="quantity-plus">+</button>
                             </div>
@@ -430,7 +430,7 @@
                             <p>85 DH / pizza</p>
 
                             <div class="cart-quantity">
-                                <button class="quantity-minus">−</button>
+                                <button class="quantity-minus">-</button>
                                 <span class="quantity">1</span>
                                 <button class="quantity-plus">+</button>
                             </div>
@@ -452,15 +452,81 @@
                         <span>Total du panier</span>
                         <strong>0 DH</strong>
                     </div>
-
                     <p>Les frais de livraison sont précisés à l'étape suivante.</p>
-
                     <button class="checkout-button">Préparer ma commande</button>
-
                     <a href="#menu" class="continue-shopping">Ajouter une autre pizza</a>
-
                 </div>
+                <!-- !CHECKOUT PAGE -->
+                <div class="checkout-page" hidden>
+                    <div class="checkout-header">
+                        <div>
+                            <p>UNE ENVIE PREND FORME</p>
+                            <h2>Ma commande<span>.</span></h2>
+                        </div>
+                        <button class="checkout-close">&times;</button>
 
+                    </div>
+                    <div class="checkout-content">
+                        <button class="back-cart-text">Retour au panier</button>
+                        <p>Encore quelques détails, et c'est prêt.</p>
+                        <h3>Comment récupérer vos pizzas ?</h3>
+                        <div class="order-type">
+                            <label class="order-option active">
+                                <input type="radio" name="orderType" value="takeaway" checked>
+
+                                <span class="radio-circle"></span>
+
+                                <span class="order-option-text">
+                                    <strong>À emporter</strong>
+                                    <small>Sans frais</small>
+                                </span>
+
+                            </label>
+                            <label class="order-option">
+                                <input type="radio" name="orderType" value="delivery">
+                                <span class="radio-circle"></span>
+                                <span class="order-option-text">
+                                    <strong>En livraison</strong>
+                                    <small>+ 20 MAD</small>
+                                </span>
+                            </label>
+                        </div>
+                        <!-- !CUSTOMER INFORMATION -->
+                        <div class="checkout-form">
+                            <label for="customerName">Votre nom</label>
+                            <input type="text" id="customerName" placeholder="Ex: Sara Amrani">
+                            <label for="customerPhone">Téléphone</label>
+                            <input type="tel" id="customerPhone" placeholder="06 12 34 56 78">
+                            <p class="phone-note">Numéro marocain : 05, 06, 07 ou +212.</p>
+                            <p class="phone-error" hidden>Indiquez un numéro marocain valide, par exemple 06 12 34 56 78.</p>
+
+                            <!-- !DELIVERY ADDRESS -->
+                            <div class="delivery-address" hidden>
+                                <label for="customerAddress">Adresse</label>
+                                <input type="text" id="customerAddress" placeholder="Votre adresse">
+                            </div>
+                        </div>
+                        <!-- !ORDER SUMMARY -->
+                        <div class="order-summary">
+                            <div class="summary-line">
+                                <span>Pizzas</span>
+                                <strong class="checkout-pizzas-price"> 0 MAD</strong>
+                            </div>
+                            <div class="summary-line">
+                                <span class="delivery-label">À emporter</span>
+                                <strong class="delivery-price">Gratuit</strong>
+                            </div>
+                            <div class="summary-total">
+                                <strong>Total</strong>
+                                <strong class="checkout-total-price">0 MAD</strong>
+                            </div>
+                        </div>
+                        <!-- !DEMO TEXT -->
+                        <p class="checkout-demo">Ceci est une démonstration. Aucun paiement et aucune commande ne seront envoyés.</p>
+                        <!-- !CONFIRM BUTTON -->
+                        <button class="confirm-order">Confirmer ma commande</button>
+                    </div>
+                </div>
             </div>
         </aside>
     </main>

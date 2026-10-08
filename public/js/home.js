@@ -75,6 +75,14 @@ cartMenu.addEventListener("click", function (event) {
 
 });
 
+let backShopping = document.querySelector(".continue-shopping");
+backShopping.addEventListener("click", function (event) {
+    event.preventDefault();
+    cartDrawer.classList.remove("active");
+    cartOverlay.classList.remove("active");
+
+});
+
 let cartItems = document.querySelectorAll(".cart-item");
 let cartEmpty = document.querySelector(".cart-empty");
 let cartFooter = document.querySelector(".cart-footer");
@@ -198,7 +206,177 @@ cartItems.forEach(function (item) {
     });
 });
 
-
 // !===================this is for initialize panier
 updateCart();
 
+// !===================this is for checkout page
+
+let checkoutPage = document.querySelector(".checkout-page");
+let checkoutButton = document.querySelector(".checkout-button");
+let checkoutClose = document.querySelector(".checkout-close");
+
+let checkoutPizzasPrice = document.querySelector(".checkout-pizzas-price");
+let checkoutTotalPrice = document.querySelector(".checkout-total-price");
+
+let deliveryLabel = document.querySelector(".delivery-label");
+let deliveryPrice = document.querySelector(".delivery-price");
+
+let orderOptions = document.querySelectorAll(".order-option");
+let deliveryAddress = document.querySelector(".delivery-address");
+
+// !===================this is for open checkout
+
+checkoutButton.addEventListener("click", function () {
+
+    if (cartTotal === 0) {
+        return;
+    }
+    cartEmpty.hidden = true;
+    cartFooter.hidden = true;
+    checkoutPage.hidden = false;
+
+    updateCheckout();
+
+});
+
+// !===================this is for close checkout
+
+checkoutClose.addEventListener("click", function () {
+
+    checkoutPage.hidden = true;
+    cartDrawer.classList.remove("active");
+    cartOverlay.classList.remove("active");
+
+});
+
+// !===================this is for order type
+
+orderOptions.forEach(function (option) {
+
+    option.addEventListener("click", function () {
+        orderOptions.forEach(function (item) {
+            item.classList.remove("active");
+        });
+
+        option.classList.add("active");
+        let radio = option.querySelector("input");
+        radio.checked = true;
+        updateCheckout();
+    });
+
+});
+
+
+// !===================this is for update checkout
+
+function updateCheckout() {
+
+    let pizzasPrice = 0;
+    cartItems.forEach(function (item) {
+
+        if (!item.hidden) {
+            let quantity = Number( item.querySelector(".quantity").textContent);
+            let priceText = item.querySelector(".cart-item-info p").textContent;
+            let price = Number(priceText.split(" ")[0]);
+            pizzasPrice = pizzasPrice + quantity * price;
+        }
+    });
+
+
+    let selectedOption = document.querySelector('input[name="orderType"]:checked');
+
+    let deliveryCost = 0;
+    if (selectedOption.value === "delivery") {
+        deliveryCost = 20;
+        deliveryLabel.textContent = "Livraison";
+        deliveryPrice.textContent = "20 MAD";
+        deliveryAddress.hidden = false;
+
+    } else {
+        deliveryLabel.textContent = "À emporter";
+        deliveryPrice.textContent = "Gratuit";
+        deliveryAddress.hidden = true;
+    }
+
+    let totalPrice = pizzasPrice + deliveryCost;
+    checkoutPizzasPrice.textContent = pizzasPrice + " MAD";
+    checkoutTotalPrice.textContent = totalPrice + " MAD";
+
+}
+
+// !===================this is for phone validation
+let customerPhone = document.getElementById("customerPhone");
+let phoneError = document.querySelector(".phone-error");
+
+customerPhone.addEventListener("input", function () {
+    let phoneValue = customerPhone.value.trim();
+    let cleanPhone = phoneValue.replace(/[\s()-]/g, "");
+
+    // !+212
+    if (cleanPhone.startsWith("+212")) {
+        let numberAfterCode =
+            cleanPhone.substring(4);
+
+        if (numberAfterCode.length > 9) {
+
+            phoneError.textContent = "Le numéro ne doit pas dépasser 10 chiffres.";
+            phoneError.hidden = false;
+            customerPhone.classList.add("phone-invalid");
+            return;
+        }
+
+        if (numberAfterCode.length < 9) {
+            phoneError.textContent = "Indiquez un numéro marocain valide, par exemple +212 6 12 34 56 78.";
+            phoneError.hidden = false;
+            customerPhone.classList.add("phone-invalid");
+            return;
+        }
+
+
+        if (!/^[5678]\d{8}$/.test(numberAfterCode)) {
+
+            phoneError.textContent =
+                "Indiquez un numéro marocain valide.";
+            phoneError.hidden = false;
+            customerPhone.classList.add("phone-invalid");
+            return;
+        }
+    }
+    // !LOCAL MOROCCAN NUMBER
+    else {
+        if (cleanPhone.length > 10) {
+            phoneError.textContent = "Le numéro ne doit pas dépasser 10 chiffres.";
+            phoneError.hidden = false;
+            customerPhone.classList.add("phone-invalid");
+            return;
+        }
+
+
+        if (cleanPhone.length < 10) {
+            phoneError.textContent ="Indiquez un numéro marocain valide, par exemple 06 12 34 56 78.";
+            phoneError.hidden = false;
+            customerPhone.classList.add("phone-invalid");
+            return;
+        }
+        if (!/^(05|06|07|08)\d{8}$/.test(cleanPhone)) {
+            phoneError.textContent = "Indiquez un numéro marocain valide.";
+            phoneError.hidden = false;
+            customerPhone.classList.add("phone-invalid");
+            return;
+        }
+    }
+
+    phoneError.hidden = true;
+    customerPhone.classList.remove("phone-invalid");
+
+});
+
+// !============== this is retoure
+let backCartText = document.querySelector(".back-cart-text");
+
+backCartText.addEventListener("click", function (event) {
+    event.preventDefault();
+    checkoutPage.hidden = true;
+    cartFooter.hidden = false;
+
+});
